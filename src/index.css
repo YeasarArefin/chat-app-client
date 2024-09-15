@@ -11,9 +11,9 @@
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #abb7d1;
+    background: #1d2c46;
     border-radius: 100vh;
-    border: 3px solid #fff;
+    border: 3px solid #101826;
   }
 
 .me{
@@ -38,7 +38,7 @@
 }
 
 .system{
-    @apply bg-red-700 rounded-lg px-2 py-1 text-white mx-5 shadow-lg capitalize
+    @apply bg-red-700 rounded-3xl px-2 py-1 text-white mx-5 shadow-lg capitalize
 }
 
 .you{
