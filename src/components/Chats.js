@@ -62,22 +62,6 @@ const Chats = ({ socket, name, room }) => {
         }
     };
 
-    /* const handleFileUpload = () => {
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                const fileData = reader.result;
-                socket.emit('send_file', {
-                    author: name,
-                    filename: file.name,
-                    file: fileData
-                });
-                setFile(null);
-                setShowFileUpload(false);
-            };
-            reader.readAsArrayBuffer(file); // Read file as ArrayBuffer for binary data
-        }
-    }; */
     const handleFileUpload = async () => {
         const reader = new FileReader();
         reader.readAsArrayBuffer(file);
@@ -149,49 +133,26 @@ const Chats = ({ socket, name, room }) => {
         });
     }, [socket]);
 
-    /* useEffect(() => {
-        socket.on('receive_message', (data) => {
-            setMessageList((list) => [...list, data]);
-        });
-
-        socket.on('receive_file', (data) => {
-            console.log("🚀 ~ socket.on ~ data:", data);
-            const byteCharacters = atob(data.file);
-            const byteNumbers = new Array(byteCharacters.length);
-            for (let i = 0; i < byteCharacters.length; i++) {
-                byteNumbers[i] = byteCharacters.charCodeAt(i);
-            }
-            const byteArray = new Uint8Array(byteNumbers);
-            const blob = new Blob([byteArray], { type: 'application/octet-stream' });
-            const url = URL.createObjectURL(blob);
-            setMessageList((list) => [...list, {
-                author: data.author,
-                filename: data.filename,
-                fileUrl: url,
-                time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-            }]);
-        });
-
-        socket.on('message', (data) => {
-            setMessageList((list) => [...list, data]);
-        });
-
-    }, [name, socket]); */
-
-    console.log(messageList);
-
-
     return (
         <div>
-
-            <div className='h-[96vh] flex flex-col justify-center items-center' >
-
+            <div className='h-[100vh] flex flex-col justify-center items-center relative' >
+                <div className='text-center font-semibold mb-3'>
+                    <span className='font-sans italic text-2xl font-bold text-blue-600'>Money Chat</span>
+                    <p className='text-xs text-white'>
+                        <span>By </span>
+                        <a target='_blank' className='underline' href="https://github.com/YeasarArefin" rel="noreferrer">YeasarArefin</a>
+                    </p>
+                </div>
+                <div className='lg:w-[600px] lg:h-[600px] md:w-[300px] md:h-[300px] w-[200px] h-[200px] -rotate-45 absolute opacity-30 filter rounded-full blur-[100px] bg-blue-600'></div>
                 <div className='w-full lg:w-4/6'>
 
                     <div className='p-2 bg-primary text-gray-200 rounded-t-lg border border-gray-800 border-b-0 grid grid-cols-3'>
                         <p><span className='font-bold'>User</span> : {name}</p>
-                        <p className='text-center font-semibold'>Money Chat By <a target='_blank' className='underline' href="https://github.com/YeasarArefin" rel="noreferrer">YeasarArefin</a></p>
-                        <p className='flex justify-end gap-x-1'><span className='font-bold'>Room</span> : <span className='text-blue-500'>{room}</span></p>
+                        <span></span>
+                        <p className='flex justify-end gap-x-1'>
+                            <span className='font-bold'>Room</span> :
+                            <span className='text-blue-500 underline'>{room}</span>
+                        </p>
                     </div>
 
                     <div className='h-[500px] lg:h-[600px] border border-gray-800'>
@@ -202,13 +163,13 @@ const Chats = ({ socket, name, room }) => {
                                     {list?.pic && <div className='px-5'><img className='w-[300px] shadow-lg rounded-lg' src={list?.pic} alt="pic" /></div>}
 
                                     {list?.fileUrl && (
-                                        <div className='px-5'>
-                                            <a href={list.fileUrl} download={list.filename} className='text-white bg-blue-600 px-4 py-1 rounded-2xl underline'>{list.filename}</a>
+                                        <div className='px-5 mb-1'>
+                                            <a href={list.fileUrl} download={list.filename} className='text-white bg-blue-600 px-4 py-1 rounded-2xl underline '>File: {list.filename}</a>
                                         </div>
                                     )}
                                     {list?.message && (
                                         <div id={list?.message.length > 30 ? 'big' : ''} className={list?.author === 'System' ? 'system' : 'mx-5 text-lg px-4 py-1 bg-blue-700 text-white rounded-3xl'}>
-                                            <p className={list?.author === 'System' ? 'system' : ''}>{list?.message}</p>
+                                            <p>{list?.message}</p>
                                         </div>
                                     )}
                                     <div className='flex items-center gap-x-2 text-xs mt-1 mx-6 text-white'>
@@ -225,7 +186,7 @@ const Chats = ({ socket, name, room }) => {
 
                     <div className='flex'>
 
-                        <input disabled={saveImageLoading} ref={messageRef} onKeyPress={(e) => e.key == 'Enter' && sendMessage()} className='px-4 py-2 outline-none w-full border border-gray-800 rounded-r-none border-t-0 rounded-bl-lg focus:ring-2 ring-blue-500 bg-primary text-white transition duration-200 ' onChange={(e) => setMessage(e.target.value)} type="text" placeholder='Say Something...' pattern="[^\s]+" />
+                        <input disabled={saveImageLoading} ref={messageRef} onKeyPress={(e) => e.key == 'Enter' && sendMessage()} className='px-4 py-2 outline-none w-full border border-gray-800 rounded-r-none border-t-0 rounded-bl-lg focus:ring-2 ring-blue-500 bg-primary text-white transition duration-200 ' onChange={(e) => setMessage(e.target.value)} type="text" placeholder='Say Here . . .' pattern="[^\s]+" />
 
                         <button disabled={saveFileLoading} onClick={() => {
                             setShowFileUpload(!showFileUpload);
