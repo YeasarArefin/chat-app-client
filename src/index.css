@@ -20,34 +20,230 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    margin: 20px 0 10px 0;
+    margin: 15px 0 8px 0;
 }
 
 .message_container{
     width: 100%;
     height: 100%;
+    padding: 0;
+    overflow-y: auto;
 }
 
-.me .text-lg{
-    @apply bg-blue-700 shadow-lg
+.me .text-lg, .me .text-sm{
+    @apply shadow-lg
 }
 
 #big{
     overflow-wrap: break-word;
-    width: 300px;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 260px;
+}
+
+@media (min-width: 640px) {
+    #big {
+        max-width: 320px;
+    }
+}
+
+@media (min-width: 768px) {
+    #big {
+        max-width: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #big {
+        max-width: 400px;
+    }
 }
 
 .system{
-    @apply bg-red-700 rounded-3xl px-4 py-2 text-white mx-5 shadow-lg capitalize
+    @apply bg-red-600 rounded-3xl px-3 py-3 text-white mx-3 shadow-lg capitalize text-sm font-semibold;
+    background-color: #dc2626 !important; /* Force red background */
+}
+
+@media (min-width: 640px) {
+    .system {
+        @apply px-4 mx-5 text-base py-2;
+        background-color: #dc2626 !important; /* Force red background */
+    }
+}
+
+/* Mobile-specific system message styling */
+@media (max-width: 640px) {
+    .system {
+        @apply py-4 min-h-[50px];
+        background-color: #ef4444 !important; /* Brighter red for mobile */
+    }
 }
 
 .you{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 20px 0 10px 0;
+    margin: 15px 0 8px 0;
 }
 
-.you .text-lg{
+.you .text-lg, .you .text-sm{
     @apply bg-blue-500 shadow-lg
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+    .me, .you {
+        margin: 10px 0 6px 0;
+    }
+    
+    .message_container {
+        padding: 8px 0;
+    }
+    
+    /* Code block responsive styles */
+    .message-with-code {
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+    
+    .message-with-code pre {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+        padding: 8px 12px !important;
+    }
+    
+    .message-with-code .react-syntax-highlighter-line-number {
+        font-size: 10px !important;
+        min-width: 20px !important;
+    }
+    
+    /* Ensure touch targets are at least 44px */
+    button {
+        min-height: 44px;
+    }
+    
+    input {
+        min-height: 44px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+    
+    /* Enhanced system message for mobile */
+    .system {
+        min-height: 52px;
+        line-height: 1.4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+/* Improve scrolling on mobile */
+.message_container {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Code block message styling */
+.message-with-code {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.message-with-code > div:not([class*="bg-gray-900"]) {
+    /* Regular text parts in code messages */
+    margin-bottom: 4px;
+}
+
+/* Ensure code blocks don't overflow on mobile */
+@media (max-width: 640px) {
+    .message-with-code > div > div {
+        max-width: calc(100vw - 32px);
+        overflow-x: auto;
+    }
+}
+
+/* Better touch targets */
+@media (hover: none) and (pointer: coarse) {
+    button, input {
+        min-height: 48px;
+    }
+}
+
+/* Code block styling */
+.message-with-code {
+    max-width: none !important;
+    min-width: 300px;
+}
+
+.message-with-code .bg-gray-900 {
+    margin: 8px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+/* Override message container max-width for code blocks */
+.mx-3.sm\\:mx-5:has(.message-with-code),
+.mx-5:has(.message-with-code) {
+    max-width: 95% !important;
+    min-width: 300px;
+}
+
+@media (min-width: 640px) {
+    .mx-3.sm\\:mx-5:has(.message-with-code),
+    .mx-5:has(.message-with-code) {
+        max-width: 98% !important;
+        min-width: 400px;
+    }
+}
+
+/* For messages containing code blocks, expand the bubble */
+.mx-3.sm\\:mx-5 .message-with-code,
+.mx-5 .message-with-code {
+    margin: -12px -16px -8px -16px;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+@media (min-width: 640px) {
+    .mx-3.sm\\:mx-5 .message-with-code,
+    .mx-5 .message-with-code {
+        margin: -16px -16px -8px -16px;
+    }
+}
+
+/* Inline code styling */
+code {
+    font-family: 'Courier New', monospace;
+}
+
+/* Syntax highlighter customization */
+.message-with-code pre {
+    margin: 0 !important;
+    border-radius: 0 0 8px 8px !important;
+    font-size: 13px !important;
+}
+
+@media (min-width: 640px) {
+    .message-with-code pre {
+        font-size: 14px !important;
+    }
+}
+
+.message-with-code .bg-gray-800 {
+    border-radius: 8px 8px 0 0;
+}
+
+/* Ensure code blocks don't break message layout */
+.message-with-code > div {
+    margin: 0;
+}
+
+/* Auto-resize textarea styling */
+textarea {
+    field-sizing: content;
 }
