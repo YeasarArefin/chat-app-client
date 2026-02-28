@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# MoneyChat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A real-time chat application for seamless communication.
 
-## Available Scripts
+[![Build Status](https://img.shields.io/travis/com/yeasararefin/MoneyChat-Frontend.svg?style=for-the-badge)](https://travis-ci.com/yeasararefin/MoneyChat-Frontend)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?style=for-the-badge)](https://github.com/yeasararefin/MoneyChat-Frontend)
 
-In the project directory, you can run:
+## Tech Stack
 
-### `npm start`
+- **Frontend:**
+  - React
+  - Tailwind CSS
+  - Socket.io-client
+- **Testing:**
+  - @testing-library/react
+  - @testing-library/jest-dom
+- **Build Tools:**
+  - React Scripts
+  - PostCSS
+  - Autoprefixer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Real-time messaging in chat rooms
+- User authentication to join chat rooms
+- Send and receive messages, images, and files
+- User-friendly interface with a modern design
+- Scroll-to-bottom functionality for new messages
+- System messages to notify users about events
 
-### `npm test`
+## Installation Guide
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yeasararefin/MoneyChat-Frontend.git
+   ```
+2. **Navigate to the project directory:**
+   ```bash
+   cd MoneyChat-Frontend
+   ```
+3. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+## Usage Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Start the development server:**
+   ```bash
+   npm start
+   ```
+2. **Open your browser and navigate to `http://localhost:3000`**
+3. **Enter your name and a room code to join a chat room.**
+4. **Start chatting!**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Screenshots / Demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Login Page](https://via.placeholder.com/468x300?text=Login+Page)
+_Login Page_
 
-### `npm run eject`
+![Chat Interface](https://via.placeholder.com/468x300?text=Chat+Interface)
+_Chat Interface_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contact / Support
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Email:** [yeasararefin007@gmail.com](mailto:yeasararefin007@gamil.com)
+- **Portfolio:** [yeasararefin.vercel.app](https://yeasararefin.vercel.app)
